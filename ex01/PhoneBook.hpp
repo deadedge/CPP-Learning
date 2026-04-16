@@ -1,5 +1,4 @@
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
+#pragma once
 #include <iostream>
 #include "Contact.hpp"
 
@@ -17,5 +16,3 @@ public:
   Contact *getAllContacts();
   Contact GetContactByIndex(size_t index);
 };
-
-#endif

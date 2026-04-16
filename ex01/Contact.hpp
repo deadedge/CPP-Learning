@@ -1,5 +1,4 @@
-#ifndef CONTACT_H
-#define CONTACT_H
+#pragma once
 #include <iostream>
 
 class Contact
@@ -11,7 +10,7 @@ private:
   std::string _phoneNumber;
   std::string _darkSecret;
 
-  bool isValidNumber(std::string number) const;
+
 
 public:
   Contact();
@@ -30,4 +29,3 @@ public:
   bool setDarkSecret(std::string darkSecret);
 };
 
-#endif

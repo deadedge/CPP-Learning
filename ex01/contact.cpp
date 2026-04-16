@@ -1,30 +1,7 @@
 #include "Contact.hpp"
-#include <cctype>
-
+#include "utils.hpp"
 Contact::Contact() {}
 Contact::~Contact() {}
-
-bool Contact::isValidNumber(std::string number) const
-{
-  size_t i = 0;
-  while (i < number.length() && std::isspace(number[i]))
-    i++;
-  while (i < number.length() && !std::isdigit(number[i]))
-  {
-    if (number[i] != '-' && number[i] != '+')
-      return false;
-    i++;
-  }
-  if (i == number.length())
-    return false;
-  while (i < number.length())
-  {
-    if (!std::isdigit(number[i]))
-      return false;
-    i++;
-  }
-  return true;
-}
 
 std::string Contact::getFirstName() const { return _firstName; };
 std::string Contact::getLastName() const { return _lastName; };
@@ -57,7 +34,7 @@ bool Contact::setNickname(std::string nickName)
 
 bool Contact::setPhoneNumber(std::string phoneNumber)
 {
-  if (phoneNumber.empty() || !isValidNumber(phoneNumber))
+  if (phoneNumber.empty() || !isValidNumber(phoneNumber) || phoneNumber.length() < 9)
     return false;
   _phoneNumber = phoneNumber;
   return true;
