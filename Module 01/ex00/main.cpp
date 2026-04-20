@@ -1,6 +1,11 @@
 #include <iostream>
+#include "Zombie.hpp"
 
-int main(int argc, char const *argv[])
+int main()
 {
- 
+    Zombie *zz = newZombie("teste");
+    zz->announce();
+    delete zz;
+
+    randomChump("jocas");
 }
