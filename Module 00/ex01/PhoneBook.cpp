@@ -13,7 +13,3 @@ Contact *PhoneBook::getAllContacts()
 {
   return _contactsList;
 }
-
-// Contact PhoneBook::GetContactByIndex(size_t index)
-// {
-// }

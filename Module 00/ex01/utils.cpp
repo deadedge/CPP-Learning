@@ -1,7 +1,7 @@
 #include "utils.hpp"
 #include <cctype>
 
-bool	isValidNumber(std::string number)
+bool isValidNumber(std::string number)
 {
 	size_t i = 0;
 	while (i < number.length() && std::isspace(number[i]))
@@ -21,4 +21,11 @@ bool	isValidNumber(std::string number)
 		i++;
 	}
 	return (true);
+}
+
+std::string formatText(std::string text)
+{
+	if (text.length() > 10)
+		return text.substr(0, 9) + ".";
+	return text;
 }

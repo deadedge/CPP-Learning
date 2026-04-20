@@ -45,6 +45,8 @@ void drawSearch(PhoneBook &phonebook)
     system("clear");
     std::string input;
     Contact *contact = phonebook.getAllContacts();
+    if (!contact || contact[0].getFirstName().empty())
+      break;
     std::cout << std::right
               << std::setw(10) << "Index"
               << "|"
@@ -65,11 +67,11 @@ void drawSearch(PhoneBook &phonebook)
       std::cout << std::right
                 << std::setw(10) << i
                 << "|"
-                << std::setw(10) << contact_selected.getFirstName()
+                << std::setw(10) << formatText(contact_selected.getFirstName())
                 << "|"
-                << std::setw(10) << contact_selected.getLastName()
+                << std::setw(10) << formatText(contact_selected.getLastName())
                 << "|"
-                << std::setw(10) << contact_selected.getNickname()
+                << std::setw(10) << formatText(contact_selected.getNickname())
                 << "|"
                 << std::endl;
     }
@@ -81,6 +83,9 @@ void drawSearch(PhoneBook &phonebook)
     int number = std::atoi(input.c_str());
     if (number < 0 || number > 8)
       continue;
+    if (contact[number].getFirstName().empty())
+      continue;
+
     system("clear");
 
     std::cout << std::right
@@ -92,48 +97,49 @@ void drawSearch(PhoneBook &phonebook)
               << "|"
               << std::setw(10) << "Nickname"
               << "|"
-              << std::setw(10) << "Phonenumber"
+              << std::setw(10) << "Number"
               << "|"
-              << std::setw(10) << "Dark Secret"
+              << std::setw(10) << "Secret"
               << "|"
               << std::endl;
-    std::cout << std::setfill('-') << std::setw(64) << "" << std::endl;
+    std::cout << std::setfill('-') << std::setw(66) << "" << std::endl;
     std::cout << std::setfill(' ');
 
     std::cout << std::right
               << std::setw(10) << number
               << "|"
-              << std::setw(10) << contact[number].getFirstName()
+              << std::setw(10) << formatText(contact[number].getFirstName())
               << "|"
-              << std::setw(10) << contact[number].getLastName()
+              << std::setw(10) << formatText(contact[number].getLastName())
               << "|"
-              << std::setw(10) << contact[number].getNickname()
+              << std::setw(10) << formatText(contact[number].getNickname())
               << "|"
-              << std::setw(10) << contact[number].getPhoneNumber()
+              << std::setw(10) << formatText(contact[number].getPhoneNumber())
               << "|"
-              << std::setw(10) << contact[number].getDarkSecret()
+              << std::setw(10) << formatText(contact[number].getDarkSecret())
               << "|"
               << std::endl;
 
     std::cout << "\nPress Enter to continue: " << std::endl;
 
     std::getline(std::cin, input);
+    break;
   }
 }
 
-void testData(PhoneBook &phonebook)
-{
-  Contact newContact;
+// void testData(PhoneBook &phonebook)
+// {
+//   Contact newContact;
 
-  newContact.setFirstName("teste");
-  newContact.setLastName("last test");
-  newContact.setNickname("nick test");
-  newContact.setPhoneNumber("123123123");
-  newContact.setDarkSecret("dark test");
+//   newContact.setFirstName("teste");
+//   newContact.setLastName("last test");
+//   newContact.setNickname("nick testaaaaaaaaaaaaaaaa");
+//   newContact.setPhoneNumber("123123123");
+//   newContact.setDarkSecret("dark test");
 
-  phonebook.AddContact(newContact);
-  phonebook.AddContact(newContact);
-}
+//   phonebook.AddContact(newContact);
+//   phonebook.AddContact(newContact);
+// }
 
 int main()
 {
@@ -142,7 +148,7 @@ int main()
 
   system("clear");
   std::cout << "Welcome to the best phonebook manager" << std::endl;
-  testData(phoneBook);
+  //testData(phoneBook);
   while (1)
   {
     std::cout << "Please selecte one of the avaliable options" << std::endl;
@@ -150,14 +156,14 @@ int main()
     std::cout << "2: SEARCH" << std::endl;
     std::cout << "3: EXIT" << std::endl;
     std::getline(std::cin, option);
-    if (option == "INSERT")
+    if (option == "INSERT" || option == "1")
     {
       if (!drawInsert(phoneBook))
         std::cout << "Invalid Input" << std::endl;
     }
-    else if (option == "SEARCH")
+    else if (option == "SEARCH" || option == "2")
       drawSearch(phoneBook);
-    else if (option == "EXIT")
+    else if (option == "EXIT" || option == "3")
     {
       std::cout << "BYEE!!" << std::endl;
       break;
