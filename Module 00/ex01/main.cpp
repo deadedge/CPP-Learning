@@ -127,19 +127,19 @@ void drawSearch(PhoneBook &phonebook)
   }
 }
 
-// void testData(PhoneBook &phonebook)
-// {
-//   Contact newContact;
+void testData(PhoneBook &phonebook)
+{
+  Contact newContact;
 
-//   newContact.setFirstName("teste");
-//   newContact.setLastName("last test");
-//   newContact.setNickname("nick testaaaaaaaaaaaaaaaa");
-//   newContact.setPhoneNumber("123123123");
-//   newContact.setDarkSecret("dark test");
+  newContact.setFirstName("teste");
+  newContact.setLastName("last test");
+  newContact.setNickname("nick testaaaaaaaaaaaaaaaa");
+  newContact.setPhoneNumber("123123123");
+  newContact.setDarkSecret("dark test");
 
-//   phonebook.AddContact(newContact);
-//   phonebook.AddContact(newContact);
-// }
+  phonebook.AddContact(newContact);
+  phonebook.AddContact(newContact);
+}
 
 int main()
 {
@@ -148,7 +148,7 @@ int main()
 
   system("clear");
   std::cout << "Welcome to the best phonebook manager" << std::endl;
-  //testData(phoneBook);
+  testData(phoneBook);
   while (1)
   {
     std::cout << "Please selecte one of the avaliable options" << std::endl;
