@@ -22,25 +22,47 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
+
+  switch (this->getLevel(level))
+  {
+  case 0:
+    this->debug();
+    this->info();
+    this->warning();
+    this->error();
+    break;
+  case 1:
+
+    this->info();
+    this->warning();
+    this->error();
+    break;
+  case 2:
+
+    this->warning();
+    this->error();
+    break;
+  case 3:
+    this->error();
+    break;
+
+  default:
+    std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+    break;
+  }
+}
+
+int Harl::getLevel(std::string level)
+{
   const std::string funcsName[4] = {
       "DEBUG",
       "INFO",
       "WARNING",
       "ERROR"};
-  
-  void (Harl::*functions[4])(void) = {
-      &Harl::debug,
-      &Harl::info,
-      &Harl::warning,
-      &Harl::error,
-  };
-
   for (size_t i = 0; i < 4; i++)
   {
     if (funcsName[i] == level)
-    {
-      (this->*functions[i])();
-      return;
-    }
+      return i;
   }
+  return -1;
 }

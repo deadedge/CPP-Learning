@@ -15,4 +15,5 @@ public:
     ~Harl();
 
     void complain(std::string level);
+    int getLevel(std::string level);
 };

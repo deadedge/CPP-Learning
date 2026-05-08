@@ -1,5 +1,5 @@
 SRC = *.cpp
-NAME = harl
+NAME = harlFilter
 CC = c++ -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
