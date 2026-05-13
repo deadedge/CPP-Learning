@@ -1,16 +1,13 @@
 #include <iostream>
 #include "Fixed.hpp"
-
+#include "Point.hpp"
 int main(void)
 {
-  Fixed a;
-  Fixed const b(Fixed(5.05f) * Fixed(2));
-  std::cout << a << std::endl;
-  std::cout << ++a << std::endl;
-  std::cout << a << std::endl;
-  std::cout << a++ << std::endl;
-  std::cout << a << std::endl;
-  std::cout << b << std::endl;
-  std::cout << Fixed::max(a, b) << std::endl;
+  Point point(2, 2);
+  Point a(0, 0);
+  Point b(6, 0);
+  Point c(0, 6);
+  std::cout << "Esta dentro? " << (point.bsp(a, b, c, point) ? "Sim" : "Nao") << std::endl;
+
   return 0;
 }
